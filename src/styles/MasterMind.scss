@@ -1,0 +1,14 @@
+.game {
+  border: 1px solid black;
+  height: 50vh;
+  width: 50vw;
+  margin: 10% auto;
+
+  &__header {
+    text-align: center;
+    color: #999;
+    &--highlight {
+      color: rgb(161, 0, 0);
+    }
+  }
+}

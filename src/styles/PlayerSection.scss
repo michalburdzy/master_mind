@@ -1,0 +1,17 @@
+.panel {
+  border: 1px solid black;
+  text-align: center;
+  &__inputs {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+  }
+  &__input {
+    display: block;
+    flex-grow: 1;
+  }
+  &__submit {
+    width: 30%;
+    background-color: yellowgreen;
+  }
+}
