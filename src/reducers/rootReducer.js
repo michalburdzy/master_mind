@@ -1,31 +1,54 @@
 import getNumbers from '../utils/getNumbers';
 import checkPlayerBet from '../utils/checkPlayerBet';
+import {
+  ON,
+  OFF,
+  GET_NEW_NUMBERS,
+  PLAYER_BET,
+  SURRENDER,
+  RESTART_GAME
+} from '../actions/actionTypes';
 
 const initialState = {
   game: false,
-  won: false,
+  win: null,
+  power: false,
   turn: 1,
   numbers: getNumbers(),
   bets: [],
   score: [],
+  startTime: null
 };
 
 const rootReducer = (state = initialState, action) => {
+  console.log(action.type);
   switch (action.type) {
-    case 'onoff':
-      return { ...state, game: !state.game };
-    case 'getNewNumbers':
+    case ON:
+      return { ...state, power: true, turn: 1, startTime: Date.now() };
+    case OFF:
+      return { ...initialState };
+    case GET_NEW_NUMBERS:
       return { ...state, numbers: getNumbers() };
-    case 'playerGuess':
+    case PLAYER_BET:
       const playerResult = checkPlayerBet(action.bet, state.numbers);
       if (playerResult[0] === 3 && playerResult[0] === playerResult[1]) {
-        return { ...state, score: playerResult, won: true };
+        return { ...state, score: playerResult, win: true };
       }
       return {
         ...state,
         bets: action.bet,
         turn: state.turn + 1,
-        score: playerResult,
+        score: playerResult
+      };
+    case SURRENDER:
+      return { ...state, win: false, startTime: null };
+    case RESTART_GAME:
+      return {
+        ...state,
+        turn: 1,
+        numbers: getNumbers(),
+        win: null,
+        startTime: Date.now()
       };
     default:
       return state;

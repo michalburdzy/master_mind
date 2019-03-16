@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ON, OFF } from '../actions/actionTypes';
 
 class OnOffSwitch extends Component {
   constructor() {
@@ -8,10 +9,11 @@ class OnOffSwitch extends Component {
     this.onButtonClick = this.onButtonClick.bind(this);
   }
   renderContent() {
-    return this.props.game ? 'Off' : 'On';
+    return this.props.power ? '0ff' : 'On';
   }
   onButtonClick() {
-    this.props.dispatch({ type: 'onoff' });
+    const type = this.props.power ? OFF : ON;
+    this.props.dispatch({ type });
   }
   render() {
     return <button onClick={this.onButtonClick}>{this.renderContent()}</button>;
@@ -19,7 +21,7 @@ class OnOffSwitch extends Component {
 }
 
 const mapStateToProps = state => {
-  return { game: state.game };
+  return { power: state.power };
 };
 
 export default connect(mapStateToProps)(OnOffSwitch);

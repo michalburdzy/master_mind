@@ -11,4 +11,17 @@
       color: rgb(161, 0, 0);
     }
   }
+  &__results {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    display: flex;
+
+    &_detail {
+      width: 50%;
+      border: 1px solid red;
+    }
+    &_score {
+      text-align: center;
+    }
+  }
 }

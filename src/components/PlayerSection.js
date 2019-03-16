@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../styles/PlayerSection.scss';
+import { PLAYER_BET, GET_NEW_NUMBERS } from '../actions/actionTypes';
 
 class PlayerSection extends Component {
   constructor() {
     super();
-    this.state = { inputValues: [1, 2, 3] };
+    this.state = { inputValues: [0, 1, 2] };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSubmitClick = this.onSubmitClick.bind(this);
   }
   componentDidMount() {
-    this.props.dispatch({ type: 'getNewNumbers' });
+    this.props.dispatch({ type: GET_NEW_NUMBERS });
   }
   onInputChange(i, e) {
     if (typeof e.target.value === 'string' && e.target.value !== '') {
@@ -19,14 +20,14 @@ class PlayerSection extends Component {
       const newState = [...this.state.inputValues];
       newState[i] = newVal;
       this.setState({
-        inputValues: newState,
+        inputValues: newState
       });
     }
   }
   onSubmitClick() {
     this.props.dispatch({
-      type: 'playerGuess',
-      bet: this.state.inputValues,
+      type: PLAYER_BET,
+      bet: this.state.inputValues
     });
   }
   render() {
