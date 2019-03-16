@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import OnOffSwitch from './OnOffSwitch';
+// import OnOffSwitch from './OnOffSwitch';
 import PlayerSection from './PlayerSection';
 import RevealNumbers from './RevealNumbers';
+import EnterPlayerName from './EnterPlayerName';
+import Header from './Header';
 import '../styles/MasterMind.scss';
 import { RESTART_GAME } from '../actions/actionTypes';
 
@@ -10,7 +12,6 @@ export class MasterMind extends Component {
   constructor() {
     super();
     this.renderContent = this.renderContent.bind(this);
-    this.renderHeader = this.renderHeader.bind(this);
     this.onTryAgain = this.onTryAgain.bind(this);
   }
   onTryAgain() {
@@ -20,9 +21,25 @@ export class MasterMind extends Component {
   }
   renderContent() {
     if (this.props.win === true) {
+      let scores;
+      scores = localStorage.getItem('scores');
+      if (scores) {
+        scores = JSON.parse(scores);
+        console.log(scores);
+      } else {
+        scores = [];
+        scores.push({
+          name: this.props.playerName,
+          turn: this.props.turn,
+          time: Date.now() - this.props.startTime
+        });
+        localStorage.setItem('scores', JSON.stringify(scores));
+      }
       return (
         <div>
-          <h2>You Win!</h2>
+          <h2>
+            {this.props.playerName} win in {this.props.turn} turn!
+          </h2>
           <h3>Your time: {(Date.now() - this.props.startTime) / 1000}s</h3>
           <button onClick={this.onTryAgain}>Try again</button>
         </div>
@@ -38,6 +55,9 @@ export class MasterMind extends Component {
       );
     }
     if (this.props.power) {
+      if (!this.props.playerName) {
+        return <EnterPlayerName />;
+      }
       return (
         <div className="game__body">
           <RevealNumbers />
@@ -65,18 +85,15 @@ export class MasterMind extends Component {
       );
     }
   }
-  renderHeader() {
-    return this.props.won ? 'You won!' : "It's Master Mind game!";
-  }
   render() {
     console.log(this.props);
-    const headerClass = this.props.game
-      ? 'game__header game__header--highlight'
-      : 'game__header';
     return (
       <div className="game">
-        <h1 className={headerClass}>{this.renderHeader()}</h1>
-        <OnOffSwitch />
+        <Header
+          headerClass={
+            this.props.game === true ? 'header header--highlight' : 'header'
+          }
+        />
         {this.renderContent()}
       </div>
     );

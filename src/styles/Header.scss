@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+  color: #999;
+  &--highlight {
+    color: rgb(161, 0, 0);
+  }
+  &__modal {
+    position: absolute;
+    top: 30vh;
+    left: 20%;
+    width: 60%;
+    min-height: 30vw;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    transform: translateY(1);
+    transition: all 0.5s;
+
+    &--hidden {
+      left: -110%;
+    }
+  }
+}

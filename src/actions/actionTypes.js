@@ -4,3 +4,4 @@ export const GET_NEW_NUMBERS = 'GET_NEW_NUMBERS';
 export const PLAYER_BET = 'PLAYER_BET';
 export const SURRENDER = 'SURRENDER';
 export const RESTART_GAME = 'RESTART_GAME';
+export const SET_PLAYER_NAME = 'SET_PLAYER_NAME';
