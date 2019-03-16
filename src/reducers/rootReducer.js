@@ -21,7 +21,6 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-  console.log(action.type);
   switch (action.type) {
     case ON:
       return { ...state, power: true, turn: 1, startTime: Date.now() };
