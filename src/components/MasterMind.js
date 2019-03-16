@@ -22,10 +22,21 @@ export class MasterMind extends Component {
   renderContent() {
     if (this.props.win === true) {
       let scores;
-      scores = localStorage.getItem('scores');
-      if (scores) {
-        scores = JSON.parse(scores);
-        console.log(scores);
+      scores = JSON.parse(localStorage.getItem('scores'));
+      console.log(scores);
+      if (
+        typeof scores === 'object' &&
+        Array.isArray(scores) &&
+        scores.length > 0
+      ) {
+        scores.push({
+          name: this.props.playerName,
+          turn: this.props.turn,
+          time: Date.now() - this.props.startTime
+        });
+        scores.sort((a, b) => a.time - b.time);
+        scores = scores.slice(0, 10);
+        localStorage.setItem('scores', JSON.stringify(scores));
       } else {
         scores = [];
         scores.push({

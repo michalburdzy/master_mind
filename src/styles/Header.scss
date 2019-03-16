@@ -16,6 +16,17 @@
     transform: translateY(1);
     transition: all 0.5s;
 
+    &Close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 120%;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.5rem;
+      border: 1px solid #fff;
+    }
+
     &--hidden {
       left: -110%;
     }

@@ -8,7 +8,7 @@ class PlayerSection extends Component {
     super();
     this.state = { inputValues: [0, 1, 2] };
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSubmitClick = this.onSubmitClick.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
   componentDidMount() {
     this.props.dispatch({ type: GET_NEW_NUMBERS });
@@ -24,7 +24,8 @@ class PlayerSection extends Component {
       });
     }
   }
-  onSubmitClick() {
+  onFormSubmit(e) {
+    e.preventDefault();
     this.props.dispatch({
       type: PLAYER_BET,
       bet: this.state.inputValues
@@ -32,7 +33,7 @@ class PlayerSection extends Component {
   }
   render() {
     return (
-      <div className="panel">
+      <form className="panel">
         <div className="panel__inputs">
           <input
             maxLength="1"
@@ -62,10 +63,14 @@ class PlayerSection extends Component {
             onChange={e => this.onInputChange(2, e)}
           />
         </div>
-        <button className="panel__submit" onClick={this.onSubmitClick}>
+        <button
+          type="submit"
+          className="panel__submit"
+          onClick={this.onFormSubmit}
+        >
           Submit
         </button>
-      </div>
+      </form>
     );
   }
 }

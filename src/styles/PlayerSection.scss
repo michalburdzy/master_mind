@@ -2,13 +2,15 @@
   border: 1px solid black;
   text-align: center;
   &__inputs {
-    width: 50%;
+    width: 55%;
     margin: 0 auto;
     display: flex;
   }
   &__input {
+    max-width: 33%;
     display: block;
-    flex-grow: 1;
+    font-size: 3rem;
+    height: 3rem;
   }
   &__submit {
     width: 30%;

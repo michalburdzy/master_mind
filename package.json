@@ -1,5 +1,6 @@
 {
   "name": "master_mind",
+  "author": "Michal Burdzy https://github.com/mmicalt",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
