@@ -6,7 +6,7 @@ import RevealNumbers from './RevealNumbers';
 import '../styles/MasterMind.scss';
 import { RESTART_GAME } from '../actions/actionTypes';
 
-class MasterMind extends Component {
+export class MasterMind extends Component {
   constructor() {
     super();
     this.renderContent = this.renderContent.bind(this);
