@@ -15,22 +15,20 @@ class PlayerSection extends Component {
   componentDidMount() {
     this.props.dispatch({ type: GET_NEW_NUMBERS });
   }
-  onInputChange(e) {
-    if (typeof e.target.value === 'string' && e.target.value !== '') {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '');
-      let newVal = parseInt(e.target.value);
-      const newState = [...this.state.inputValues];
-      newState[parseInt(e.currentTarget.id.split('-')[1])] = newVal;
-      this.setState({
-        inputValues: newState
-      });
-    }
+  onInputChange(e, i) {
+    let newVal = parseInt(e);
+    const newState = [...this.state.inputValues];
+    newState[i] = newVal;
+    this.setState({
+      inputValues: newState,
+    });
   }
+
   onFormSubmit(e) {
     e.preventDefault();
     this.props.dispatch({
       type: PLAYER_BET,
-      bet: this.state.inputValues
+      bet: this.state.inputValues,
     });
   }
   renderInputs() {

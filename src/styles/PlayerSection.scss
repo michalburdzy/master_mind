@@ -1,13 +1,19 @@
 .panel {
   border: 1px solid black;
   text-align: center;
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   &__inputs {
-    width: 55%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
   }
   &__input {
-    max-width: 33%;
+    // max-width: 33%;
     display: block;
     font-size: 3rem;
     height: 3rem;
