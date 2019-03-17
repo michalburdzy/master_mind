@@ -23,7 +23,6 @@ export class MasterMind extends Component {
     if (this.props.win === true) {
       let scores;
       scores = JSON.parse(localStorage.getItem('scores'));
-      console.log(scores);
       if (
         typeof scores === 'object' &&
         Array.isArray(scores) &&
