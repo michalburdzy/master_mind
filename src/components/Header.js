@@ -55,7 +55,7 @@ class Header extends Component {
               X
             </div>
             <h2>Best Scores</h2>
-            {this.renderScores()}
+            <ol className="header__scores">{this.renderScores()}</ol>
           </div>
           <OnOffSwitch />
           {this.props.gameIsOn === true && this.props.win === null ? (
