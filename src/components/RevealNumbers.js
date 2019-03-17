@@ -13,7 +13,7 @@ class RevealNumbers extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.onSurrender}>Show numbers</button>
+        <button onClick={this.onSurrender}>Reveal numbers</button>
       </div>
     );
   }

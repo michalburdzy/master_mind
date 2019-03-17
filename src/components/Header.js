@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import OnOffSwitch from './OnOffSwitch';
+import RevealNumbers from './RevealNumbers';
+
 import '../styles/Header.scss';
 
 class Header extends Component {
@@ -40,22 +42,29 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-        <div
-          className={
-            this.state.showModal
-              ? 'header__modal'
-              : 'header__modal header__modal--hidden'
-          }
-        >
-          <div className="header__modalClose" onClick={this.onCloseModal}>
-            X
+      <div className="header">
+        <div className="header__nav">
+          <div
+            className={
+              this.state.showModal
+                ? 'header__modal'
+                : 'header__modal header__modal--hidden'
+            }
+          >
+            <div className="header__modalClose" onClick={this.onCloseModal}>
+              X
+            </div>
+            <h2>Best Scores</h2>
+            {this.renderScores()}
           </div>
-          <h2>Best Scores</h2>
-          {this.renderScores()}
+          <OnOffSwitch />
+          {this.props.gameIsOn === true && this.props.win === null ? (
+            <RevealNumbers />
+          ) : (
+            ''
+          )}
+          <button onClick={this.handleClick}>10 Best scores</button>
         </div>
-        <OnOffSwitch />
-        <button onClick={this.handleClick}>10 Best scores:</button>
         <h1 className={this.props.headerClass}> It's Master Mind game!</h1>
       </div>
     );

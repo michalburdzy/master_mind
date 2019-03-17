@@ -13,12 +13,12 @@ class EnterPlayerName extends Component {
     e.preventDefault();
     this.props.dispatch({
       type: SET_PLAYER_NAME,
-      playerName: this.state.playerName
+      playerName: this.state.playerName,
     });
   }
   onNameEnter(e) {
     this.setState({
-      playerName: e.target.value
+      playerName: e.target.value,
     });
   }
   componentDidMount() {
@@ -27,19 +27,21 @@ class EnterPlayerName extends Component {
   }
   render() {
     return (
-      <form>
-        <label htmlFor="playerName">Player Name</label>
-        <input
-          ref="playerName"
-          onChange={this.onNameEnter}
-          type="text"
-          name="playerName"
-          value={this.state.playerName}
-        />
-        <button type="submit" onClick={this.onFormSubmit}>
-          Submit
-        </button>
-      </form>
+      <div className="game__body">
+        <form className="game__playerName">
+          <label htmlFor="playerName">Player Name</label>
+          <input
+            ref="playerName"
+            onChange={this.onNameEnter}
+            type="text"
+            name="playerName"
+            value={this.state.playerName}
+          />
+          <button type="submit" onClick={this.onFormSubmit}>
+            Submit
+          </button>
+        </form>
+      </div>
     );
   }
 }

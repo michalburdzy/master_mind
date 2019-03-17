@@ -27,7 +27,7 @@ class Input extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="panel__inputGroup">
         <input
           maxLength="1"
           className="panel__input"
@@ -38,11 +38,19 @@ class Input extends Component {
           onChange={this.props.onInputChange}
           id={'input-' + this.props.inputIndex}
         />
-        <button type="button" onClick={this.addValue}>
-          +
+        <button
+          className="panel__button panel__button--plus"
+          type="button"
+          onClick={this.addValue}
+        >
+          &uarr;
         </button>
-        <button type="button" onClick={this.subtractValue}>
-          -
+        <button
+          className="panel__button panel__button--minus"
+          type="button"
+          onClick={this.subtractValue}
+        >
+          &darr;
         </button>
       </div>
     );

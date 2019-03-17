@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import OnOffSwitch from './OnOffSwitch';
 import PlayerSection from './PlayerSection';
-import RevealNumbers from './RevealNumbers';
 import EnterPlayerName from './EnterPlayerName';
 import Header from './Header';
 import '../styles/MasterMind.scss';
@@ -16,7 +15,7 @@ export class MasterMind extends Component {
   }
   onTryAgain() {
     this.props.dispatch({
-      type: RESTART_GAME
+      type: RESTART_GAME,
     });
   }
   renderContent() {
@@ -31,7 +30,7 @@ export class MasterMind extends Component {
         scores.push({
           name: this.props.playerName,
           turn: this.props.turn,
-          time: Date.now() - this.props.startTime
+          time: Date.now() - this.props.startTime,
         });
         scores.sort((a, b) => a.time - b.time);
         scores = scores.slice(0, 10);
@@ -41,26 +40,30 @@ export class MasterMind extends Component {
         scores.push({
           name: this.props.playerName,
           turn: this.props.turn,
-          time: Date.now() - this.props.startTime
+          time: Date.now() - this.props.startTime,
         });
         localStorage.setItem('scores', JSON.stringify(scores));
       }
       return (
-        <div>
+        <div className="game__body">
           <h2>
             {this.props.playerName} win in {this.props.turn} turn!
           </h2>
           <h3>Your time: {(Date.now() - this.props.startTime) / 1000}s</h3>
-          <button onClick={this.onTryAgain}>Try again</button>
+          <button className="game__result" onClick={this.onTryAgain}>
+            Try again
+          </button>
         </div>
       );
     }
     if (this.props.win === false) {
       return (
-        <div>
+        <div className="game__body">
           <h2>You Lost!</h2>
           <h3>numbers: {this.props.numbers.map(num => `${num}`)}</h3>
-          <button onClick={this.onTryAgain}>Try again</button>
+          <button className="game__result" onClick={this.onTryAgain}>
+            Try again
+          </button>
         </div>
       );
     }
@@ -70,7 +73,7 @@ export class MasterMind extends Component {
       }
       return (
         <div className="game__body">
-          <RevealNumbers />
+          <h2 className="game__turn">turn: {this.props.turn}</h2>
           {this.props.turn > 1 ? (
             <div className="game__results">
               <div className="game__results_detail">
@@ -89,7 +92,6 @@ export class MasterMind extends Component {
               <h3>Pick your numbers</h3>
             </div>
           )}
-          <h2 className="game__turn">turn: {this.props.turn}</h2>
           <PlayerSection />
         </div>
       );
@@ -101,8 +103,10 @@ export class MasterMind extends Component {
       <div className="game">
         <Header
           headerClass={
-            this.props.game === true ? 'header header--highlight' : 'header'
+            this.props.power === true ? 'header header--highlight' : 'header'
           }
+          win={this.props.win}
+          gameIsOn={this.props.game}
         />
         {this.renderContent()}
       </div>

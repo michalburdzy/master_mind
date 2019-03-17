@@ -3,6 +3,10 @@
   height: 50vh;
   width: 50vw;
   margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  user-select: none;
 
   &__results {
     box-sizing: border-box;
@@ -18,7 +22,41 @@
     }
   }
 
-  &__body h3 {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+    width: 100%;
+    margin: auto;
     text-align: center;
+  }
+  &__result {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #fff;
+    &:focus {
+      outline-color: #fff;
+    }
+  }
+
+  &__playerName {
+    border: 1px solid #000;
+    text-align: center;
+    margin: auto;
+    input,
+    label {
+      display: block;
+      margin: 1rem;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+    button {
+      width: 100%;
+      font-size: 1.4rem;
+      border-radius: 4px;
+    }
   }
 }
