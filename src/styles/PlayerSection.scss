@@ -47,6 +47,9 @@
     width: 100%;
     border: none;
     border-radius: 4px;
+    outline-color: #fff;
+    cursor: default;
+    user-select: none;
   }
 
   &__submit {
