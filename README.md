@@ -4,7 +4,7 @@
 
 Type `yarn` to install the dependencies
 
-# Run tests
+## Run tests
 
 Type `yarn test` and then `a` or to run all tests.
 Typing `q` ends the test session.

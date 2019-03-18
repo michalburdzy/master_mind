@@ -9,7 +9,7 @@ class OnOffSwitch extends Component {
     this.onButtonClick = this.onButtonClick.bind(this);
   }
   renderContent() {
-    return this.props.power ? '0ff' : 'On';
+    return this.props.power ? 'Turn 0ff' : 'Turn On';
   }
   onButtonClick() {
     const type = this.props.power ? OFF : ON;

@@ -1,5 +1,6 @@
 .panel {
   text-align: center;
+  margin-bottom: 1rem;
 
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
@@ -45,6 +46,7 @@
     height: 3rem;
     width: 100%;
     border: none;
+    border-radius: 4px;
   }
 
   &__submit {

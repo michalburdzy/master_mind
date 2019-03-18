@@ -1,24 +1,44 @@
 .game {
   border: 1px solid black;
+  background-color: #fff;
   height: 50vh;
-  width: 50vw;
+  min-height: 30rem;
+  width: 80vw;
   margin: 10vh auto;
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
   user-select: none;
+  border-radius: 5px;
+  box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.3);
+
+  @media only screen and (min-width: 1200px) {
+    width: 50vw;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    width: 40vw;
+  }
+
+  &__turn {
+    font-size: 2rem;
+  }
 
   &__results {
     box-sizing: border-box;
-    border: 1px solid #000;
     display: flex;
+    justify-content: space-evenly;
 
     &_detail {
       width: 50%;
-      border: 1px solid red;
+      font-size: 1.4rem;
+      border: 1px solid #eee;
+      // max-width: 40%;
     }
     &_score {
       text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
     }
   }
 

@@ -63,7 +63,7 @@ class Header extends Component {
           ) : (
             ''
           )}
-          <button onClick={this.handleClick}>10 Best scores</button>
+          <button onClick={this.handleClick}>Scores</button>
         </div>
         <h1 className={this.props.headerClass}> It's Master Mind game!</h1>
       </div>

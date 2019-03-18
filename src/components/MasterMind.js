@@ -60,7 +60,7 @@ export class MasterMind extends Component {
       return (
         <div className="game__body">
           <h2>You Lost!</h2>
-          <h3>numbers: {this.props.numbers.map(num => `${num}`)}</h3>
+          <h2>Correct numbers: {this.props.numbers.map(num => `${num}`)}</h2>
           <button className="game__result" onClick={this.onTryAgain}>
             Try again
           </button>
@@ -85,7 +85,6 @@ export class MasterMind extends Component {
                 <p>Correct numbers in right position</p>
                 <div className="game__results_score">{this.props.score[1]}</div>
               </div>
-              <div>game nums: {this.props.numbers}</div>
             </div>
           ) : (
             <div>
@@ -98,7 +97,6 @@ export class MasterMind extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="game">
         <Header

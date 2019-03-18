@@ -11,6 +11,9 @@ class EnterPlayerName extends Component {
   }
   onFormSubmit(e) {
     e.preventDefault();
+    if (this.state.playerName.length === 0) {
+      return;
+    }
     this.props.dispatch({
       type: SET_PLAYER_NAME,
       playerName: this.state.playerName,
